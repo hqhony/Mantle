@@ -41,6 +41,14 @@ extern const NSInteger MTLTestModelNameMissing;
 
 @end
 
+@interface MTLSubclassTestModel : MTLTestModel
+
+// Properties to test merging between subclass and superclass
+@property (nonatomic, copy) NSString *role;
+@property (nonatomic, copy) NSNumber *generation;
+
+@end
+
 @interface MTLArrayTestModel : MTLModel <MTLJSONSerializing>
 
 // This property is associated with a "users.username" key in JSON.
@@ -61,4 +69,8 @@ extern const NSInteger MTLTestModelNameMissing;
 
 // Returns a default name of 'foobar' when validateName:error: is invoked
 @interface MTLSelfValidatingModel : MTLValidationModel
+@end
+
+// Maps a non-existant property "name" to the "username" key in JSON.
+@interface MTLIllegalJSONMappingModel : MTLModel <MTLJSONSerializing>
 @end
